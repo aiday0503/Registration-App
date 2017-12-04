@@ -1,0 +1,97 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+<div class="container">
+
+    <h1>
+        Welcome to {{ title }}!
+    </h1>
+    <p>
+        {{welcome}}
+    </p>
+    <form (submit)="onSubmit()">
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" name="firstName" class="form-control" required [(ngModel)]="user.firstName" #firstName='ngModel'>
+            <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"></div>
+            <div [hidden]="firstName.valid " class="alert alert-danger ">
+                First Name is required.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" name="lastName" class="form-control" required [(ngModel)]="user.lastName " #lastName='ngModel' />
+            <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched) "></div>
+            <div [hidden]="lastName.valid " class="alert alert-danger ">
+                Last Name is required.
+            </div>
+
+        </div>
+        <div class="form-group ">
+            <label for="email ">Email</label>
+            <input type="text " name="email " class="form-control " required [(ngModel)]="user.email " #email='ngModel'>
+            <div *ngIf="email.invalid && (email.dirty || email.touched) "></div>
+            <div [hidden]="email.valid " class="alert alert-danger ">
+                Email is required.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name">Password</label>
+            <input type="password" class="form-control" id="password" required [(ngModel)]="user.password" name="password" #password="ngModel">
+            <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                Password is required
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmPassword" required validateEqual="password" [(ngModel)]="user.confirmPassword" name="confirmPassword" #confirmPassword="ngModel">
+            <div [hidden]="confirmPassword.valid || confirmPassword.pristine" class="alert alert-danger">
+                Passwords did not match
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="Adress ">Street Address</label>
+            <input type="text " name="address " class="form-control " required [(ngModel)]="user.address " #address='ngModel'>
+            <div *ngIf="address.invalid && (address.dirty || address.touched) "></div>
+            <div [hidden]="address.valid " class="alert alert-danger ">
+                Address is required.
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="Unit ">Unit/Apt#</label>
+            <input type="text " name="unit " class="form-control " required [(ngModel)]="user.unit " #unit='ngModel'>
+            <div *ngIf="unit.invalid && (unit.dirty || unit.touched) "></div>
+            <div [hidden]="unit.valid " class="alert alert-danger ">
+                Unit/Apt # is required.
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="City ">City</label>
+            <input type="text " name="city " class="form-control " required [(ngModel)]="user.city " #city='ngModel'>
+            <div *ngIf="city.invalid && (city.dirty || city.touched) "></div>
+            <div [hidden]="city.valid " class="alert alert-danger ">
+                City is required.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="state">State</label>
+            <select class="form-control " name="state" required [(ngModel)]="user.state" #state='ngModel'>
+                <option value="ca">CA</option>
+                <option value="wa">WA</option>
+                <option value="nv">NV</option>
+                <option value="ny">NY</option>
+              </select>
+            <div *ngIf="state.invalid && (state.dirty || state.touched) "></div>
+            <div [hidden]="state.valid " class="alert alert-danger ">
+                Please choose state.
+            </div>
+        </div>
+        <div>
+            <span>I am feeling lucky</span>
+            <input type="radio" name="yes" value="yes" checked> Yes
+            <input type="radio" name="no" value="no"> No<br>
+        </div>
+        <button type="submit" (click)="onSubmit($event)">Submit</button>
+    </form>
+</div>
